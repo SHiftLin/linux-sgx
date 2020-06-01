@@ -29,7 +29,6 @@
  *
  */
 
-
 #include "sgx_trts.h"
 #include "sgx_utils.h"
 #include "EnclaveMessageExchange.h"
@@ -194,6 +193,9 @@ extern "C" ATTESTATION_STATUS exchange_report(sgx_dh_msg2_t *dh_msg2,
     return status;
 }
 
+// extern void ocall_print_string(const char *str);
+
+
 //Process the request from the Source enclave and send the response message back to the Source enclave
 extern "C" ATTESTATION_STATUS generate_response(secure_message_t* req_message,
                                      size_t req_message_size,
@@ -284,6 +286,8 @@ extern "C" ATTESTATION_STATUS generate_response(secure_message_t* req_message,
         SAFE_FREE(decrypted_data);
         return INVALID_PARAMETER_ERROR;
     }
+
+    printf("req mesg: %u %u\n",ms->msg_type,ms->target_fn_id);
 
     if(ms->msg_type == MESSAGE_EXCHANGE)
     {

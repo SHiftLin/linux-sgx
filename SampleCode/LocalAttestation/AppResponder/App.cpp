@@ -81,6 +81,18 @@ void signal_handler(int sig)
     exit(1);
 }
 
+
+/* OCall functions */
+void ocall_print_string(const char *str)
+{
+    /* Proxy/Bridge will check the length and null-terminate 
+     * the input string to prevent buffer overflow. 
+     */
+    printf("%s", str);
+}
+
+
+
 int  main(int argc, char* argv[])
 {
     (void)argc;

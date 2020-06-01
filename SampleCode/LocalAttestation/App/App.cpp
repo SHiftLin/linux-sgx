@@ -45,6 +45,17 @@
 
 sgx_enclave_id_t initiator_enclave_id = 0, responder_enclave_id = 0;
 
+
+/* OCall functions */
+void ocall_print_string(const char *str)
+{
+    /* Proxy/Bridge will check the length and null-terminate 
+     * the input string to prevent buffer overflow. 
+     */
+    printf("%s", str);
+}
+
+
 int main(int argc, char* argv[])
 {
     int update = 0;
